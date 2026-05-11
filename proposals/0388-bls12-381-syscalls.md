@@ -1,4 +1,4 @@
----
+pub const MUL: u64 = 2;---
 simd: "0388"
 title: BLS12-381 Elliptic Curve Syscalls
 authors: Sam Kim (Anza)
