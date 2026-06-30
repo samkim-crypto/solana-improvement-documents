@@ -117,9 +117,9 @@ The existing `sol_curve_group_op` syscall will be extended to support
 define_syscall!(fn sol_curve_group_op(
     curve_id: u64,
     group_op: u64,
-    left_input_addr: *const u8,
-    right_input_addr: *const u8,
-    result_point_addr: *mut u8
+    left_input_addr: u64, // interpreted as *const u8
+    right_input_addr: u64, // interpreted as *const u8
+    result_point_addr: u64, // interpreted as *const u8
 ) -> u64);
 ```
 
@@ -146,10 +146,10 @@ The existing `sol_curve_multiscalar_mul` syscall will be extended for `secp256r1
 ```rust
 define_syscall!(fn sol_curve_multiscalar_mul(
     curve_id: u64,
-    scalars_addr: *const u8,
-    points_addr: *const u8,
+    scalars_addr: u64, // interpreted as *const u8
+    points_addr: u64, // interpreted as *const u8
     points_len: u64,
-    result_point_addr: *mut u8
+    result_point_addr: u64, // interpreted as *const u8
 ) -> u64);
 ```
 
@@ -165,8 +165,8 @@ The `sol_curve_validate_point` syscall will be extended to support `secp256r1`.
 ```rust
 define_syscall!(fn sol_curve_validate_point(
     curve_id: u64,
-    point_addr: *const u8,
-    result: *mut u8
+    point_addr: u64, // interpreted as *const u8
+    result: u64, // interpreted as *const u8
 ) -> u64);
 ```
 
@@ -189,8 +189,8 @@ The `sol_curve_decompress` syscall will be extended for `secp256r1`.
 ```rust
 define_syscall!(fn sol_curve_decompress(
     curve_id: u64,
-    point: *const u8,
-    result: *mut u8
+    point: u64, // interpreted as *const u8
+    result: u64, // interpreted as *const u8
 ) -> u64);
 ```
 
